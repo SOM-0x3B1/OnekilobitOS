@@ -7,10 +7,10 @@
 	margin: 0;	
 }
 html{
-	cursor: url("custom.png"), default;
+	cursor: url("media/custom.png"), default;
 }
 a,button{
-	cursor: url("pointer.png"), default;
+	cursor: url("media/pointer.png"), default;
 }
 
 body{
@@ -130,7 +130,6 @@ button:hover{
   100% { transform: skewX(0deg); }
 }
 
-
 #command_line{
 	display: block;
 	position: absolute;
@@ -162,6 +161,27 @@ button:hover{
 }
 #command:focus{
     outline: none;    
+}
+
+
+/*================ MESSENGER =================*/
+
+#messengerWindow{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 20vw;
+	height: 50vh;
+	border: solid;
+	border-color: white;
+}
+
+#messages{
+	height: 100%;
+}
+
+.time{
+	font-size: 12pt;
 }
 
 ::-webkit-scrollbar {
