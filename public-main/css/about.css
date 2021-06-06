@@ -1,0 +1,71 @@
+.flex{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	height: auto;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+	padding-top: 20vh;
+	margin-bottom: 5%;
+}
+
+.flex section{
+	position: relative;
+	top: 20%;
+	display: block;
+	margin: 3% 2% 3% 2%;
+	font-size: 16pt;
+	overflow: hidden;
+
+	width: 50vw;
+	max-width: 20cm;
+	height: auto;
+	min-height: 4cm;
+	border: solid;	
+	border-width: 6px;
+	background-color: white;
+	padding: 0 2ex;
+
+	transition: padding 0.2s;
+}
+
+.flex section:hover{
+	padding: 0 3ex;
+}
+
+.flex section h2{
+	text-align: center;
+	position: relative;
+	display: block;
+	width: 100%;	
+	z-index: 2; 
+	background-color: white;
+	border-bottom: solid;
+	border-width: 6px;
+}
+
+.flex section p{
+	padding: 1ex;
+	display: block;
+	overflow: hidden;
+}
+
+.flex section div{	
+	padding: 0.5ex 1ex;
+}
+
+.flex section div a{	
+	color: blue;
+}
+
+.flex section img{
+	height: 4ex;
+	padding: 2ex;
+}
+
+
+#icon{
+	height: 7ex;
+}

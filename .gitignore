@@ -6,3 +6,4 @@ package.json
 config.json
 node_modules
 *.wav
+cert

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Onekilobit Servers</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/project-page.css">
+	<link rel="icon" href="media/Ethernet_card.png">	
+	<script src="js/modal.js"></script>
+</head>
+<body>
+	<header>		
+		<div>	
+			<h1><a href="main.html"><img src="media/title2.png"></a></h1>		
+			<nav>			
+				<div class="left_div">
+					<a href="guide.html">Guide</a>
+				</div>
+				<div class="right_div">
+					<a href="about.html">About</a></a>
+				</div>
+			</nav>
+		</div>
+	</header>	
+
+	<div class="flex">
+		<section>
+			<h2>Images</h2>
+			<div id="gallery">
+				<div class="image">
+					<img src="media/szlgimages/1t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/2t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/3t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/4t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/5t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/6t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/7t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/8t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/9t.png" onclick="modal(this.src)">
+				</div>
+				<div class="image">
+						<img src="media/szlgimages/10t.png" onclick="modal(this.src)">
+				</div>
+			</div>
+		</section>		
+
+		<section>
+			<h2>360°</h2>
+			<div id="gallery">
+				<div class="image">
+					<a target="_blank" href="media/szlgimages/1.png">
+						<img src="media/szlgimages/1t.png">
+					</a>
+				</div>
+
+				<div class="image">
+					<a target="_blank" href="media/szlgimages/2.png">
+						<img src="media/szlgimages/2t.png">
+					</a>
+				</div>
+
+				<div class="image">
+					<a target="_blank" href="media/szlgimages/3.png">
+						<img src="media/szlgimages/3t.png">
+					</a>
+				</div>
+			</div>
+		</section>		
+	</div>
+
+	<footer>onekilobit.ddns.net</footer>
+</body>
+	<div id="modal">
+		<div id="imgContainer">
+			<span class="close" onclick="closeModal(); detect = true;">&times;</span>
+			<img id="modalImage" src="">
+		</div>
+	</div>
+</html>
