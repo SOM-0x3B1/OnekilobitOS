@@ -3,11 +3,42 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const { joinUser, removeUser, findUser } = require('./users');
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+/*app.get('/', function (req, res) {
+    console.log(req.cookies);
+
+    if (!req.cookies.latogatott) {
+        res.cookie('latogatott', '0');
+    }
+    else {
+        let lat = parseInt(req.cookies.latogatott) + 1;
+        res.cookie('latogatott', lat.toString());
+    }
+
+    res.send();
+});*/
 
 app.use(express.static('public'));
 
-let thisRoom = "";
+app.get('/', function (req, res) {
+    console.log(req.cookies);
 
+    if (!req.cookies.latogatott) {
+        res.cookie('latogatott', '0');
+    }
+    else {
+        let lat = parseInt(req.cookies.latogatott) + 1;
+        res.cookie('latogatott', lat.toString());
+    }
+
+    res.send();
+});
+
+
+let thisRoom = "";
 
 io.on("connection", function (socket) {
     console.log("connected");

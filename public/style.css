@@ -60,12 +60,12 @@ h2{
 	animation: fade 7s;
 }
 
-.terminal img{
+/*.terminal img{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
+}*/
 
 @keyframes fade {
 	0% {
@@ -88,7 +88,7 @@ div ul{
 div ul li{
 	padding: 1ex 0;
 }
-button{
+#startbutton{
 	display: block;
 	position: absolute;
 	font-family: 'VT323', monospace;	
@@ -104,7 +104,7 @@ button{
 	transform: translate(-50%, 50%);
 	z-index: 9999;
 }
-button:hover{
+#startbutton:hover{
 	border-color: rgb(170, 170, 170);
 }
 
@@ -167,40 +167,147 @@ button:hover{
 /*================ MESSENGER =================*/
 
 #messengerWindow{
+	display: none;
 	position: absolute;
-	bottom: 0;
-	left: 0;
+	bottom: 5vh;
+	left: 2vw;
 	width: 20vw;
 	height: 50vh;
 	border: solid;
 	border-color: white;
+	animation: fade 1s;
 }
-
-#messages{
+#messengerWindow h3{
+	position: sticky;
+	top: 0;
+	width: 20vw;
+	border-bottom: solid white;
+	text-indent: 1ex;
+}
+#messengerWindow form{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 5%;
+	border-top: solid;
+	border-color: white;	
+}
+#submitButton{
+	font-family: 'VT323', monospace;
+	position: absolute;
+	right: 0;	
+	bottom: 0;
 	height: 100%;
+	width: 20%;
+	border: none;
+	border-left: solid;
+	border-color: white;
+	background: none;
+	color: white;
+	font-size: 17pt;	
 }
-
+#m{
+	font-family: 'VT323', monospace;
+	width: 70%;
+	left: 0;	
+	bottom: 0;
+	background: none;
+	border: none;
+	color: white;
+	font-size: 17pt;	
+	padding-left: 1ex;
+}
+#m:focus{
+	outline: none;
+}
+#messages{
+	height: 88%;
+}
 .time{
 	font-size: 12pt;
 }
+.myDiv{
+	text-align: right;
+}
+
+/*================ GUI =================*/
+
+.icon{
+	display: none;
+	height: 40px;
+	width: 40px;
+	position: relative;
+	background: none;
+	border:none;
+	margin-left: 1ex;
+	margin-right: 3ex;	
+}
+.icon img{
+	height: 40px;
+	width: 40px;
+	padding: 0;	
+	margin: 0;
+}
+.icon h4{
+	position: absolute;
+	transform: translate(-50%, +120%);
+	bottom: 0;
+	left: 50%;
+	color: white;
+}
+
+.desktopicon{
+	margin: 2ex;
+	margin-top: 6ex;
+	border: solid;
+	border-color: white;	
+	width: 50px;
+	height: 50px;
+}
+#startmenu{
+	width: auto;
+	margin-left: 1ex;
+	border-right: solid;
+	border-color: white;
+	padding-right: 1ex;
+	margin-right: 2ex;
+}
+
+#GUI{
+	display: none;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	height: 90%;
+	
+	padding: 0 1ex;
+}
+
+#taskbar{
+	display: none;
+	border-top: solid;
+	border-color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	height: 8%;
+	padding-top: 0.2%;
+}
+
 
 ::-webkit-scrollbar {
-	width: 0px;
-	border: none;
- 	/*border-width: 2px;
- 	background-color: green;*/
-}
-
-
-::-webkit-scrollbar-track {
-  background-color: transparent;   
-}
-
-
-::-webkit-scrollbar-thumb {
-  background: transparent;
-  border: none;
-  /*border-width: 2px;
-  border-color: black;
-  border-radius: 2px;*/
-}
+	width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+	background-color: black;
+	border: solid;
+	border-width: 1px;
+	border-color: white;
+	border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: white;
+  }
