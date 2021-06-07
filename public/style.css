@@ -306,7 +306,6 @@ div ul li{
 	display: none;
 	border-top: solid;
 	border-color: white;
-	display: flex;
 	flex-direction: row;
 	justify-content: start;
 	height: 8%;

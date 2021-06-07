@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Onekilobit OS</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<link rel="icon" href="media/favicon.png">
+</head>
+
+<body>
+	<h1 class="startScreen">
+		<pre>
+  ___             _    _ _       _     _ _      ___  ____  
+ / _ \ _ __   ___| | _(_) | ___ | |__ (_) |_   / _ \/ ___| 
+| | | | '_ \ / _ \ |/ / | |/ _ \| '_ \| | __| | | | \___ \ 
+| |_| | | | |  __/   <| | | (_) | |_) | | |_  | |_| |___) |
+ \___/|_| |_|\___|_|\_\_|_|\___/|_.__/|_|\__|  \___/|____/  </pre>
+		<button id="startbutton" onclick="start(); setTimeout(afterstart,9000)">START</button>
+	</h1>
+
+	<h2>Onbekilobit OS v0.2.5</h2>
+	<a id="back" href="\">Back to safety</a>
+
+	<div class="terminal">
+		<ul id="ul">
+			<li></li>
+		</ul>
+
+		<p id="command_line"><span>> <input type="text" id="command" value=""></span></p>
+
+
+		<div id="GUI">
+			<button class="icon desktopicon"><img src="media/utazovaddiszno-icon.png" alt="">
+				<h4>Utazó Vaddisznó</h4>
+			</button>
+			<button class="icon desktopicon"><img src="media/creepywebsite-icon.png" alt="">
+				<h4>Creepy website</h4>
+			</button>
+			<button class="icon desktopicon" onclick="showMessenger()"><img src="media/messenger-icon.png" alt="">
+				<h4>Onekilobit Messenger</h4>
+			</button>
+		</div>
+
+		<div id="taskbar">
+			<button class="icon" id="startmenu"> <img src="media/logo.png" alt=""></button>
+			<div id="ostime"></div>
+		</div>
+	</div>
+
+	<div id="messengerWindow">
+		<h3>Onekilobit Messenger <button onclick="closeMessenger()">X</button></h3>
+		<form>
+			<input type="text" id="m" />
+			<input type="submit" id="submitButton" value="Send" />
+		</form>
+		<ul id="messages"></ul>
+	</div>
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+
+<script type="text/javascript" src="sound.js"></script>
+<script type="text/javascript" src="display.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="comm.js"></script>
+
+</html>

@@ -43,32 +43,71 @@ async function start() {
     document.getElementById('ostime').style.display = 'block';
 
     let icons = document.getElementsByClassName('icon');
-    for (let i = 0; i < icons.length; i++){ 
+    for (let i = 0; i < icons.length; i++) {
         icons[i].style.display = "inline";
-    }    
+    }
 }
 
+// executed after startup.mp3 ended
 function afterstart() {
     fan.play();
 }
 
+// clock
 var ostime = document.getElementById('ostime');
 const tick = setInterval(refreshTime, 1000);
-function refreshTime(){
-    ostime.innerText = moment().format("YYYY/MM/DD") + ' ' + moment().format("hh:mm:ss");
-}
+function refreshTime() { ostime.innerText = moment().format("YYYY/MM/DD") + ' ' + moment().format("hh:mm:ss"); }
 
 
-function showMessenger(){
+// messenger
+function showMessenger() {
     enter.play();
     document.getElementById('messengerWindow').style.display = 'block';
 }
-
-function closeMessenger(){
+function closeMessenger() {
     enter.play();
-    document.getElementById('messengerWindow').style.display='none';
+    document.getElementById('messengerWindow').style.display = 'none';
+}
+function displayMessage(data) {
+    let authorClass = ""; // who sent it? me or you?
+    let divClass = ""
+
+    // me or you?
+    if (data.id === ID) {
+        authorClass = "me";
+        divClass = "myDiv";
+        enter.play();
+    } else {
+        authorClass = "you";
+        divClass = "yourDiv";
+        arrows.play();
+    }
+
+
+    // actual display
+    const div = document.createElement("div");
+    div.className = divClass;
+    const li = document.createElement("li");
+
+    const p = document.createElement("p");
+    p.className = "time";
+    p.innerText = moment().format("hh:mm");
+
+    if (data.id === ID)
+        div.innerHTML = '<span class="' + authorClass + '">' + data.data.value + "</span>";
+    else
+        div.innerHTML = '<span class="' + authorClass + '">' + data.data.user + "></span>" + '<span class="message"> ' + data.data.value + "</span>";
+
+    div.appendChild(p);
+    li.appendChild(div);
+
+    document.getElementById("messages").appendChild(li);
+    
+    let messengerWindow = document.getElementById('messages');
+    messengerWindow.scrollTo(0, messengerWindow.scrollHeight);    
 }
 
-function sleep(ms) {
+// sleeeep
+function sleep(ms) { 
     return new Promise(resolve => setTimeout(resolve, ms));
 }
