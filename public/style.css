@@ -57,8 +57,21 @@ h2{
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, 42%);
-	animation: fade 7s;
+	animation: fadein 7s;
+
+	/*opacity: 1;
+	transition: opacity 1s;*/
 }
+
+/*#welcome{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);	
+}
+.terminal.hide{
+	opacity: 0;
+}*/
 
 /*.terminal img{
 	position: absolute;
@@ -67,12 +80,20 @@ h2{
 	transform: translate(-50%, -50%);
 }*/
 
-@keyframes fade {
+@keyframes fadein {
 	0% {
 		opacity: 0%;
 	}
 	100% {
 		opacity: 100%;
+	}
+}
+@keyframes fadeout {
+	0% {
+		opacity: 100%;
+	}
+	100% {
+		opacity: 0%;
 	}
 }
 
@@ -175,7 +196,7 @@ div ul li{
 	height: 50vh;
 	border: solid;
 	border-color: white;
-	animation: fade 1s;
+	animation: fadein 1s;
 }
 #messengerWindow h3{
 	position: sticky;
@@ -288,7 +309,7 @@ div ul li{
 	border-color: white;
 	padding-right: 1ex;
 	margin-right: 2ex;
-	animation: fade 5s;
+	animation: fadein 5s;
 }
 
 #GUI{
@@ -299,7 +320,7 @@ div ul li{
 	height: 90%;
 	
 	padding: 0 1ex;
-	animation: fade 5s;
+	animation: fadein 5s;
 }
 
 #taskbar{
@@ -310,7 +331,7 @@ div ul li{
 	justify-content: start;
 	height: 8%;
 	padding-top: 0.2%;
-	animation: fade 5s;
+	animation: fadein 5s;
 }
 #ostime{
 	display: none;
@@ -320,7 +341,7 @@ div ul li{
 	text-align: center;
 	word-wrap: normal;
 	font-size: 16pt;
-	animation: fade 5s;
+	animation: fadein 5s;
 }
 
 ::-webkit-scrollbar {

@@ -23,15 +23,18 @@ async function start() {
     await sleep(500);
     list.innerHTML += 'Connecting to server...  <span class="r">[ERROR]</span><br/>Authentication required.<br/><br/>';
     await sleep(300);
-    list.innerHTML += 'Onekilobit OS - Version 0.2.5<br />(C) Copyright Onekilobit Servers �̵̛̙͇̿͗͘�̷͉̗̐�̸̨͖̣̻͓̣̈́͗͗́ - �̶̨̧̨͔̗̖͎͕̒̍̈́̋̓̚�̴̧̹̻͖̦̭̬͝�̸̝̓̃̏̓̀̄͛̓͘͝. All rights reserved.';
+    list.innerHTML += 'Onekilobit OS - Version 0.3.4<br />(C) Copyright Onekilobit Servers �̵̛̙͇̿͗͘�̷͉̗̐�̸̨͖̣̻͓̣̈́͗͗́ - �̶̨̧̨͔̗̖͎͕̒̍̈́̋̓̚�̴̧̹̻͖̦̭̬͝�̸̝̓̃̏̓̀̄͛̓͘͝. All rights reserved.';
 
     let list2 = document.createElement('li');
-    response = 'Starting operating system...';
+    list2.id = 'loading';
+    response = 'Starting operating system';
     list2.innerHTML = response;
     ul.appendChild(list2);
 
-
-    await sleep(2000);
+    for (let i = 0; i < 6; i++) {
+        list2.innerHTML += '.';
+        await sleep(500);
+    }
 
     signal.play();
 
@@ -46,6 +49,10 @@ async function start() {
     for (let i = 0; i < icons.length; i++) {
         icons[i].style.display = "inline";
     }
+
+
+    await sleep(500);    
+    //terminal.classList.remove('hide');
 }
 
 // executed after startup.mp3 ended
@@ -83,7 +90,6 @@ function displayMessage(data) {
         arrows.play();
     }
 
-
     // actual display
     const div = document.createElement("div");
     div.className = divClass;
@@ -96,18 +102,18 @@ function displayMessage(data) {
     if (data.id === ID)
         div.innerHTML = '<span class="' + authorClass + '">' + data.data.value + "</span>";
     else
-        div.innerHTML = '<span class="' + authorClass + '">' + data.data.user + "></span>" + '<span class="message"> ' + data.data.value + "</span>";
+        div.innerHTML = '<span class="' + authorClass + '"><span class="r">' + data.data.user + "</span>></span>" + '<span class="message"> ' + data.data.value + "</span>";
 
     div.appendChild(p);
     li.appendChild(div);
 
     document.getElementById("messages").appendChild(li);
-    
+
     let messengerWindow = document.getElementById('messages');
-    messengerWindow.scrollTo(0, messengerWindow.scrollHeight);    
+    messengerWindow.scrollTo(0, messengerWindow.scrollHeight);
 }
 
 // sleeeep
-function sleep(ms) { 
+function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
