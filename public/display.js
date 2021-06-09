@@ -49,9 +49,7 @@ async function start() {
     for (let i = 0; i < icons.length; i++) {
         icons[i].style.display = "inline";
     }
-
-
-    await sleep(500);    
+   
     //terminal.classList.remove('hide');
 }
 
@@ -102,7 +100,7 @@ function displayMessage(data) {
     if (data.id === ID)
         div.innerHTML = '<span class="' + authorClass + '">' + data.data.value + "</span>";
     else
-        div.innerHTML = '<span class="' + authorClass + '"><span class="r">' + data.data.user + "</span>></span>" + '<span class="message"> ' + data.data.value + "</span>";
+        div.innerHTML = '<span class="' + authorClass + '"><span class="r">' + data.data.user + '</span>></span><span class="message"> ' + data.data.value + "</span>";
 
     div.appendChild(p);
     li.appendChild(div);

@@ -1,4 +1,5 @@
-let userName = "Soma";
+let e_mail = '';
+let userName = "John Doe";
 let room = "Room 1";
 let ID = "";
 const socket = io();
@@ -15,7 +16,7 @@ socket.on('send data', (data) => {
 
 // when form is submitted, capture the input value and then send it to server
 document
-    .getElementsByTagName("form")[0]
+    .getElementById('mform')
     .addEventListener("submit", function (event) {
         event.preventDefault();
         let msg = document.getElementById("m");
@@ -29,7 +30,27 @@ document
         msg.focus();
     });
 
-    
+
+// login
+document
+    .getElementById('loginForm')
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+        let e_mail = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+
+        if (email.value && password.value) {
+            socket.emit("login", {
+                email: e_mail,
+                password: password,
+                user: userName
+            });
+
+            e_mail = document.getElementById('email').value;
+        }
+    });
+
+
 // recieve any message (including the one we sent)
 socket.on("chat message", (data) => {
     displayMessage(data);

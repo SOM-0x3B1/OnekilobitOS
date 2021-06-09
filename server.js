@@ -13,6 +13,7 @@ http.createServer(function (req, res) {
 }).listen(80);
 
 const fs = require('fs');
+const { urlencoded } = require('express');
 const privateKey = fs.readFileSync('cert/_.onekilobit.eu-key.pem', 'utf8');
 const certificate = fs.readFileSync('cert/_.onekilobit.eu-crt.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate };
@@ -20,6 +21,7 @@ const httpsServer = https.createServer(credentials, app); // The actual app
 
 const io = require("socket.io")(httpsServer);
 
+app.use(express.urlencoded());
 
 // For serving static files
 app.get('/', function (req, res) {
@@ -27,6 +29,11 @@ app.get('/', function (req, res) {
 });
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/' + req.path))
+});
+
+// Login
+app.post('/login', function (req, res){
+    console.log(req.body);
 });
 
 
@@ -48,6 +55,11 @@ io.on("connection", function (socket) {
     // Recieve and send message to EVERYONE in the room
     socket.on("chat message", (data) => {
         io.to(thisRoom).emit("chat message", { data: data, id: socket.id });
+    });
+
+
+    socket.on("login", (data) => {
+        console.log(data);
     });
 
     // User disconnected

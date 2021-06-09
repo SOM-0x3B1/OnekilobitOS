@@ -28,13 +28,14 @@
 			<li></li>
 		</ul>
 
-		<p id="command_line"><span>> <input type="text" id="command" value=""></span></p>		
+		<p id="command_line"><span>> <input type="text" id="command" value=""></span></p>
 
 		<div id="GUI">
 			<!--<div id="welcome" class="hide">welcome</div>-->
 
-			<button class="icon desktopicon"><img src="media/utazovaddiszno-icon.png" alt="">
-				<h4>Utazó Vaddisznó</h4>
+			<button class="icon desktopicon" onclick="window.open('http://utazo-vaddiszno.ddns.net')"><img
+					src="media/utazovaddiszno-icon.png" alt="">
+				<h4>Az Utazó Vaddisznó</h4>
 			</button>
 			<button class="icon desktopicon"><img src="media/creepywebsite-icon.png" alt="">
 				<h4>Creepy website</h4>
@@ -52,11 +53,24 @@
 
 	<div id="messengerWindow">
 		<h3>Onekilobit Messenger <button onclick="closeMessenger()">X</button></h3>
-		<form>
+		<form id="mform">
 			<input type="text" id="m" />
 			<input type="submit" id="submitButton" value="Send" />
 		</form>
 		<ul id="messages"></ul>
+	</div>
+
+	<div id="login">
+		<h3>Please sign in <button id="closeLogin">X</button></h3>
+		<form id="loginForm">
+			<label for="email">E-mail</label><br>
+			<input type="text" id="email" name="email" placeholder="E-mail address"><br>
+			<label for="password">Password</label><br>
+			<input type="text" id="password" name="password" placeholder="Password"><br>
+
+			<input type="submit" id="loginSubmit" style="border: none; padding: 0; text-decoration: underline; color: red; cursor: url('media/pointer.png'), default;" value="Login">
+		</form>
+		<button id="signup" onclick="window.open('/register')">Sign up</button>
 	</div>
 </body>
 
@@ -67,7 +81,8 @@
 <script type="text/javascript" src="display.js"></script>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="comm.js"></script>
 
