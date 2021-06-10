@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="crt">
+    <div id="maincontainer">
+        <h1>Pusztaszentistváni gyümölcs-börze</h1>
+
+        <div id="formcontainer">
+            <h3>Finomságok</h3>
+            <form action="/vote" method="POST">
+                <input type="radio" id="korte" name="fruit" value="korte">
+                <label for="korte">Körte <span class="results">0</span></label><br>
+                <input type="radio" id="alma" name="fruit" value="alma">
+                <label for="alma">Alma <span class="results">0</span></label><br>
+                <input type="radio" id="dinnye" name="fruit" value="dinnye">
+                <label for="dinnye">Dinnye <span class="results">0</span></label>
+                <input type="radio" id="barack" name="fruit" value="barack">
+                <label for="barack">Barack <span class="results">0</span></label>
+                <input type="radio" id="padlizsan" name="fruit" value="padlizsan">
+                <label for="padlizsan">Padlizsán <span class="results">0</span></label>
+
+                <input type="submit" id="submit" value="Küld">
+            </form>
+        </div>
+
+        <img src="fruit.png" alt="">
+        <img src="fruit2.png" id="blink" alt="">
+        <img src="cat.png" alt="" id="cat">
+
+        <button onclick="blink()" id="jumpscare">REFRESH!!</button>
+    </div>
+
+    <!--<video src="bg.mp4" autoplay muted loop preload="auto"></video>-->
+    <img id="bg" src="scary.gif" alt="">
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
