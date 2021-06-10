@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Onekilobit OS</title>
 	<meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="default.css">
+	<link rel="stylesheet" type="text/css" href="default.css">
 	<link rel="stylesheet" type="text/css" href="register.css">
 	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	<link rel="icon" href="media/favicon.png">
 </head>
+
 <body>
-    <h1 class="startScreen">
+	<h1 class="startScreen">
 		<pre>
   ___             _    _ _       _     _ _      ___  ____  
  / _ \ _ __   ___| | _(_) | ___ | |__ (_) |_   / _ \/ ___| 
@@ -18,20 +20,22 @@
  \___/|_| |_|\___|_|\_\_|_|\___/|_.__/|_|\__|  \___/|____/  </pre>
 	</h1>
 
-    <h2>Onbekilobit OS v0.3.4</h2>
+	<h2>Onbekilobit OS v0.3.4</h2>
 	<a id="back" href="\">Back to safety</a>
 
-    <div id="register">
+	<div id="register">
 		<h3>Create an account <button id="closeRegister">X</button></h3>
-		<form id="registerForm">
+		<form id="registerForm" method="POST" action="/register">
 			<label for="email">E-mail</label><br>
 			<input type="text" id="email" name="email" placeholder="E-mail address"><br>
-            <label for="nickname">Nickname</label><br>
+			<label for="nickname">Nickname</label><br>
 			<input type="text" id="nickname" name="nickname" placeholder="Nickname"><br>
 			<label for="password">Password</label><br>
 			<input type="password" id="password" name="password" placeholder="Password"><br>
 
-			<input type="submit" id="registerSubmit" style="border: none; padding: 0; text-decoration: underline; color: red; cursor: url('media/pointer.png'), default;" value="Register">
+			<input type="submit" id="registerSubmit"
+				style="border: none; padding: 0; text-decoration: underline; color: red; cursor: url('media/pointer.png'), default;"
+				value="Register">
 		</form>
 	</div>
 </body>

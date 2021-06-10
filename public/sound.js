@@ -4,6 +4,7 @@ const beep = new Audio('media/beep.mp3');
 const enter = new Audio('media/enter.mp3');
 const arrows = new Audio('media/arrows.mp3');
 const signal = new Audio('media/signal.mp3');
+const click = new Audio('media/click.mp3');
 /*const msgin = new Audio('media/msgin.wav');
 const msgout = new Audio('media/msgout.wav');
 const select = new Audio('media/select.wav');

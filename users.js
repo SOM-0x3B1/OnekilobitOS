@@ -1,11 +1,11 @@
 let users = [];
 
-function joinUser(socketId, e_mail, roomName, name) {
+function joinUser(socketId, email, name, roomname) {
     const user = {
         socketID: socketId,
-        email: e_mail,
-        roomname: roomName,
-        name: name             
+        email: email,        
+        name: name,
+        roomname: roomname   
     }
     users.push(user)
     return user;

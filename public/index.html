@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	<link rel="icon" href="media/favicon.png">
+
+	<script type="text/javascript" src="sound.js"></script>
 </head>
 
 <body>
@@ -33,14 +35,14 @@
 		<div id="GUI">
 			<!--<div id="welcome" class="hide">welcome</div>-->
 
-			<button class="icon desktopicon" onclick="window.open('http://utazo-vaddiszno.ddns.net')"><img
+			<button class="icon desktopicon" onclick="window.open('http://utazo-vaddiszno.ddns.net'); enter.play();"><img
 					src="media/utazovaddiszno-icon.png" alt="">
 				<h4>Az Utazó Vaddisznó</h4>
 			</button>
 			<button class="icon desktopicon"><img src="media/creepywebsite-icon.png" alt="">
 				<h4>Creepy website</h4>
 			</button>
-			<button class="icon desktopicon" onclick="showMessenger()"><img src="media/messenger-icon.png" alt="">
+			<button class="icon desktopicon" onclick="login(); enter.play();"><img src="media/messenger-icon.png" alt="">
 				<h4>Onekilobit Messenger</h4>
 			</button>
 		</div>
@@ -52,7 +54,7 @@
 	</div>
 
 	<div id="messengerWindow">
-		<h3>Onekilobit Messenger <button onclick="closeMessenger()">X</button></h3>
+		<h3>Onekilobit Messenger <button onclick="closeMessenger();">X</button></h3>
 		<form id="mform">
 			<input type="text" id="m" />
 			<input type="submit" id="submitButton" value="Send" />
@@ -77,12 +79,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 
-<script type="text/javascript" src="sound.js"></script>
 <script type="text/javascript" src="display.js"></script>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="comm.js"></script>
 

@@ -33,7 +33,7 @@ async function start() {
 
     for (let i = 0; i < 6; i++) {
         list2.innerHTML += '.';
-        await sleep(500);
+        await sleep(0);
     }
 
     signal.play();
@@ -49,7 +49,7 @@ async function start() {
     for (let i = 0; i < icons.length; i++) {
         icons[i].style.display = "inline";
     }
-   
+
     //terminal.classList.remove('hide');
 }
 
@@ -75,11 +75,22 @@ function closeMessenger() {
 }
 
 // login
+function login() {  
+    if (joined)
+        showMessenger();
+    else
+        showLogin();
+}
 function showLogin() {
     document.getElementById('login').style.display = 'block';
 }
 function closeLogin() {
     document.getElementById('login').style.display = 'none';
+}
+function retryLogin() {
+    let h3 = document.getElementById('login').getElementsByTagName('h3')[0];
+    h3.style.color = 'red'
+    h3.innerHTML = 'Please retry <button id="closeLogin" onclick="closeLogin()">X</button></h3>';
 }
 
 
