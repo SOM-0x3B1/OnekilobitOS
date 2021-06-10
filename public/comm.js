@@ -1,18 +1,14 @@
 let e_mail = '';
-let userName = "John Doe";
-let room = "Room 1";
-let ID = "";
+let userName = 'John Doe';
+let room = 'Room 1';
+let ID = '';
 const socket = io();
 
-// send event that user has joined room
-socket.emit("join room", { username: userName, roomName: room });
-
-
-// recieve id from server.
+// recieve data from server.
 socket.on('send data', (data) => {
     ID = data.id;
+    userName = data.name;
 })
-
 
 // when form is submitted, capture the input value and then send it to server
 document
@@ -36,17 +32,14 @@ document
     .getElementById('loginForm')
     .addEventListener("submit", function (event) {
         event.preventDefault();
-        let e_mail = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
+        e_mail = document.getElementById('email').value;
+        let passWord = document.getElementById('password').value.toHash();
 
-        if (email.value && password.value) {
-            socket.emit("login", {
-                email: e_mail,
-                password: password,
-                user: userName
-            });
-
+        if (email.value && passWord) {
             e_mail = document.getElementById('email').value;
+
+            // send event that user has joined room
+            socket.emit("join room", { email: e_mail, password: passWord, roomName: room });
         }
     });
 

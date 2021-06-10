@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Onekilobit OS</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="default.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	<link rel="icon" href="media/favicon.png">
@@ -61,16 +61,16 @@
 	</div>
 
 	<div id="login">
-		<h3>Please sign in <button id="closeLogin">X</button></h3>
+		<h3>Please sign in <button id="closeLogin" onclick="closeLogin()">X</button></h3>
 		<form id="loginForm">
 			<label for="email">E-mail</label><br>
 			<input type="text" id="email" name="email" placeholder="E-mail address"><br>
 			<label for="password">Password</label><br>
-			<input type="text" id="password" name="password" placeholder="Password"><br>
+			<input type="password" id="password" name="password" placeholder="Password"><br>
 
 			<input type="submit" id="loginSubmit" style="border: none; padding: 0; text-decoration: underline; color: red; cursor: url('media/pointer.png'), default;" value="Login">
 		</form>
-		<button id="signup" onclick="window.open('/register')">Sign up</button>
+		<button id="signup" onclick="window.open('/register.html')">Sign up</button>
 	</div>
 </body>
 

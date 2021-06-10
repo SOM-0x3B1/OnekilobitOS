@@ -8,7 +8,7 @@ const { joinUser, removeUser, findUser } = require('./users'); //import user-rel
 
 // Only to redirect the default http://onekilobit.eu to https://www.onekilobit.eu
 http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://www." + req.headers['host'] + req.url });    
+    res.writeHead(301, { "Location": "https://www." + req.headers['host'] + req.url });
     res.end();
 }).listen(80);
 
@@ -19,7 +19,20 @@ const certificate = fs.readFileSync('cert/_.onekilobit.eu-crt.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials, app); // The actual app
 
+const mongoose = require('mongoose');
+mongoose.connect(config.accURL, { useUnifiedTopology: true, useNewUrlParser: true });
+const sema = new mongoose.Schema({
+    // 3. feladat
+    email: String,
+    name: String,
+    password: String
+});
+const modelname = 'Accounts';
+const model = mongoose.model(modelname, sema, modelname);
+
+
 const io = require("socket.io")(httpsServer);
+
 
 app.use(express.urlencoded());
 
@@ -31,25 +44,45 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/' + req.path))
 });
 
-// Login
-app.post('/login', function (req, res){
-    console.log(req.body);
+
+// register
+app.post('/register', function (request, response){
+    model.findOne({ email: request.body.email}, function (errors, dokumentum) {
+		if (dokumentum) {
+			
+		} else {
+			new model({
+				email: request.body.email,
+                name: request.body.name,
+				password: request.body.password				
+			}).save();
+		}
+	});
+	response.redirect('jelentkezesek.html');
 });
 
 
 let thisRoom = "";
 
 // After user connected
-io.on("connection", function (socket) {   
+io.on("connection", function (socket) {
     socket.on("join room", (data) => {
-        console.log(data.username + " connected");
-        let Newuser = joinUser(socket.id, data.username, data.roomName)
 
-        // Gives the user an id
-        socket.emit('send data', { id: socket.id, username: Newuser.username, roomname: Newuser.roomname });
+        // verification, login 
+        model.find({ email: data.email, password: data.password }, function (error, docs) {
+            if (!error) {
+                let Newuser = joinUser(socket.id, data.email, docs.name, data.roomName)
+                socket.emit('send data', { id: socket.id, name: Newuser.name });
+                console.log(data.email + " connected");
 
-        thisRoom = Newuser.roomname;
-        socket.join(Newuser.roomname);
+                thisRoom = Newuser.roomname;
+                socket.join(Newuser.roomname);
+            }
+            else {
+                socket.emit('invalid login');
+                console.log('Invalid login attempt!');
+            }
+        });
     });
 
     // Recieve and send message to EVERYONE in the room
@@ -57,16 +90,11 @@ io.on("connection", function (socket) {
         io.to(thisRoom).emit("chat message", { data: data, id: socket.id });
     });
 
-
-    socket.on("login", (data) => {
-        console.log(data);
-    });
-
     // User disconnected
     socket.on("disconnect", () => {
         const user = removeUser(socket.id);
         if (user) {
-            console.log(user.username + ' has left');
+            console.log(user.email + ' has left');
         }
     });
 });

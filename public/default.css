@@ -1,0 +1,42 @@
+*{
+	padding: 0;
+	margin: 0;	
+}
+html{
+	cursor: url("media/custom.png"), default;
+}
+a,button{
+	cursor: url("media/pointer.png"), default;
+}
+
+body{
+	font-family: 'VT323', monospace;
+	background-color: black;	
+	font-size: 17pt;	
+	color: white;	
+	width: 100%;
+	height: 100%;
+}
+h1{
+	font-size: 0.4cm;
+	position: absolute;
+	left: 50%;
+	top: 46%;
+	transform: translate(-50%, -50%);		
+}
+
+h2{
+	position: absolute;
+	right: 2vw;
+	font-size: 24pt;
+}
+#back{
+	position: absolute;
+	left: 2vw;
+	font-size: 24pt;	
+	color: white;
+	text-decoration: none;
+}
+#back:hover{
+	color: rgb(170, 170, 170);
+}

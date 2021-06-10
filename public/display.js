@@ -73,6 +73,16 @@ function closeMessenger() {
     enter.play();
     document.getElementById('messengerWindow').style.display = 'none';
 }
+
+// login
+function showLogin() {
+    document.getElementById('login').style.display = 'block';
+}
+function closeLogin() {
+    document.getElementById('login').style.display = 'none';
+}
+
+
 function displayMessage(data) {
     let authorClass = ""; // who sent it? me or you?
     let divClass = ""
