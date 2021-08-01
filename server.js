@@ -10,7 +10,7 @@ const config = require('./config.json');
 
 // Only to redirect the default http://onekilobit.eu to https://www.onekilobit.eu
 http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://www." + req.headers['host'] + req.url });
+    res.writeHead(301, { "Location": "https://os." + req.headers['host'] + req.url });
     res.end();
 }).listen(80);
 
@@ -44,7 +44,11 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'))
 });
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/' + req.path))
+    if(req.path.includes('.')){
+        res.sendFile(path.join(__dirname + '/public/' + req.path))
+    } else{
+        res.sendFile(path.join(__dirname + '/public/' + req.path + '.html'))
+    }
 });
 
 
