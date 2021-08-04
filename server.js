@@ -8,12 +8,6 @@ const { joinUser, removeUser, findUser } = require('./users'); //import user-rel
 const {toHash} = require('./hash');
 const config = require('./config.json');
 
-// Only to redirect the default http://onekilobit.eu to https://www.onekilobit.eu
-http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://os." + req.headers['host'] + req.url });
-    res.end();
-}).listen(80);
-
 const fs = require('fs');
 const { urlencoded } = require('express');
 const privateKey = fs.readFileSync('cert/_.onekilobit.eu-key.pem', 'utf8');
@@ -109,5 +103,11 @@ io.on("connection", function (socket) {
         }
     });
 });
+
+// Only to redirect the default http://onekilobit.eu to https://www.onekilobit.eu
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://os." + req.headers['host'] + req.url });
+    res.end();
+}).listen(80);
 
 httpsServer.listen(443, function () { });
