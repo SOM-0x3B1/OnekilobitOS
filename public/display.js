@@ -23,7 +23,7 @@ async function start() {
     await sleep(500);
     list.innerHTML += 'Connecting to server...  <span class="r">[ERROR]</span><br/>Authentication required.<br/><br/>';
     await sleep(300);
-    list.innerHTML += 'Onekilobit OS - Version 0.4.8<br />(C) Copyright Onekilobit Servers �̵̛̙͇̿͗͘�̷͉̗̐�̸̨͖̣̻͓̣̈́͗͗́ - �̶̨̧̨͔̗̖͎͕̒̍̈́̋̓̚�̴̧̹̻͖̦̭̬͝�̸̝̓̃̏̓̀̄͛̓͘͝. All rights reserved.';
+    list.innerHTML += 'Onekilobit OS - Version 0.5.1<br />(C) Copyright Onekilobit Servers �̵̛̙͇̿͗͘�̷͉̗̐�̸̨͖̣̻͓̣̈́͗͗́ - �̶̨̧̨͔̗̖͎͕̒̍̈́̋̓̚�̴̧̹̻͖̦̭̬͝�̸̝̓̃̏̓̀̄͛̓͘͝. All rights reserved.';
 
     let list2 = document.createElement('li');
     list2.id = 'loading';

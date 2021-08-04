@@ -5,7 +5,7 @@ const http = require('http');
 const https = require('https');
 
 const { joinUser, removeUser, findUser } = require('./users'); //import user-related functions
-const {toHash} = require('./hash');
+const { toHash } = require('./hash');
 const config = require('./config.json');
 
 const fs = require('fs');
@@ -15,18 +15,16 @@ const certificate = fs.readFileSync('cert/_.onekilobit.eu-crt.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials, app); // The actual app
 
-const mongoose = require('mongoose');
-mongoose.connect(config.accURL, { useUnifiedTopology: true, useNewUrlParser: true });
-const sema = new mongoose.Schema({
-    // 3. feladat
-    email: String,
-    name: String,
-    password: String
+var mysql = require('mysql');
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: config.passwd,
+    database: "onekilobit"
 });
-
-let modelname = 'Accounts';
-const model = mongoose.model(modelname, sema, modelname);
-
+con.connect(function (err) {
+    if (err) throw err;
+});
 
 const io = require("socket.io")(httpsServer);
 
@@ -38,9 +36,9 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'))
 });
 app.get('*', function (req, res) {
-    if(req.path.includes('.')){
+    if (req.path.includes('.')) {
         res.sendFile(path.join(__dirname + '/public/' + req.path))
-    } else{
+    } else {
         res.sendFile(path.join(__dirname + '/public/' + req.path + '.html'))
     }
 });
@@ -48,7 +46,7 @@ app.get('*', function (req, res) {
 
 // register
 app.post('/register', function (request, response) {
-    model.findOne({ email: request.body.email }, function (errors, dokumentum) {
+    /*model.findOne({ email: request.body.email }, function (errors, dokumentum) {
         if (dokumentum) {
             console.log(request.body.email + ' already exists');
             response.redirect('/register.html');
@@ -61,6 +59,25 @@ app.post('/register', function (request, response) {
             console.log(request.body.email + ' registered');
             response.redirect('/close.html');
         }
+    });*/
+    con.query("SELECT * FROM user WHERE email = ?", [request.body.email], function (err, result) {
+        if (err) {
+            console.log(err);
+        }
+        else if (result.length == 0) {
+            con.query("INSERT INTO user (email, username, password) VALUES (?, ?, ?)", [request.body.email, request.body.nickname, request.body.password], function (err, result) {
+                if (err) throw err;
+                console.log("1 record inserted");
+            });
+
+            console.log(request.body.email + ' registered.');
+            response.redirect('/close.html');
+        }
+        else {
+            console.log(result);
+            console.log(request.body.email + ' already exists');
+            response.redirect('/register.html');
+        }
     });
 });
 
@@ -71,7 +88,7 @@ let thisRoom = "";
 io.on("connection", function (socket) {
     socket.on("join room", (data) => {
         // verification, login 
-        model.findOne({ email: data.email, password: data.password }, function (error, docs) {
+        /*model.findOne({ email: data.email, password: data.password }, function (error, docs) {
             if (docs) {
                 let Newuser = joinUser(socket.id, data.email, docs.name, data.roomName)
 
@@ -86,8 +103,28 @@ io.on("connection", function (socket) {
                 socket.emit('login result', { success: false });
                 console.log('Invalid login attempt!');
             }
-        });
+        });*/
 
+        con.query("SELECT * FROM user WHERE email = ? AND password = ?", [data.email, data.password], function (err, result) {
+            if (result.length == 0) {
+                socket.emit('login result', { success: false });
+                console.log('Invalid login attempt from: ' + data.email);
+            }
+            else if (err) {
+                console.log(err);
+            }
+            else {
+                let dbuser = result[0];
+                let Newuser = joinUser(socket.id, data.email, dbuser.username, data.roomName)
+
+                socket.emit('login result', { success: true });
+                socket.emit('send data', { id: socket.id, name: Newuser.name });
+                console.log(data.email + " connected");
+
+                thisRoom = Newuser.roomname;
+                socket.join(Newuser.roomname);
+            }
+        });
     });
 
     // Recieve and send message to EVERYONE in the room
