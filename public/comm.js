@@ -70,4 +70,10 @@ socket.on("chat message", (data) => {
     displayMessage(data);
 });
 
-
+socket.on("update lvl", (data) => {
+    if(data.lvl)
+        document.getElementById('lvl').innerText=data.lvl;
+});
+function requestLVL(){
+    socket.emit("whatismylevel");
+}
