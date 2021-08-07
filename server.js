@@ -4,7 +4,7 @@ const app = express();
 const http = require('http');
 const https = require('https');
 
-const { joinUser, removeUser, findUser } = require('./users'); //import user-related functions
+const { joinUser, removeUser/*, findUserLVL*/ } = require('./users'); //import user-related functions
 const { toHash } = require('./hash');
 const config = require('./config.json');
 
@@ -115,10 +115,10 @@ io.on("connection", function (socket) {
             }
             else {
                 let dbuser = result[0];
-                let Newuser = joinUser(socket.id, data.email, dbuser.username, data.roomName)
+                let Newuser = joinUser(socket.id, data.email, dbuser.username, data.roomName, dbuser.accesslvl)
 
                 socket.emit('login result', { success: true });
-                socket.emit('send data', { id: socket.id, name: Newuser.name });
+                socket.emit('send data', { id: socket.id, name: Newuser.name, accesslvl:Newuser.lvl });
                 console.log(data.email + " connected");
 
                 thisRoom = Newuser.roomname;
@@ -139,6 +139,14 @@ io.on("connection", function (socket) {
             console.log(user.email + ' has left');
         }
     });
+
+    /*socket.on("whatismylevel", () => {        
+        let lvl = findUserLVL(socket.id);
+        if (lvl) {
+            socket.emit('update lvl', { accesslvl: lvl });
+        }
+        console.log('lvl: ' + lvl);
+    });*/
 });
 
 // Only to redirect the default http://onekilobit.eu to https://www.onekilobit.eu

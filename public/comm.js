@@ -9,6 +9,25 @@ const socket = io();
 socket.on('send data', (data) => {
     ID = data.id;
     userName = data.name;
+    document.getElementById('lvl').innerText = data.accesslvl;
+    let lvlName = document.getElementById('lvlName');
+    switch (data.accesslvl) {
+        case 1:
+            lvlName.innerText = 'Guest';
+            break;
+        case 2:
+            lvlName.innerText = 'Member';
+            break;
+        case 3:
+            lvlName.innerText = 'Staff';
+            break;
+        case 4:
+            lvlName.innerText = 'Co-Admin';
+            break;
+        case 5:
+            lvlName.innerText = 'Administrator';
+            break;
+    }
 });
 
 socket.on('invalid login', (data) => {
@@ -49,15 +68,15 @@ document
             // send event that user has joined room
             socket.emit("join room", { email: e_mail, password: passWord, roomName: room });
         }
-        else{
+        else {
             retryLogin();
         }
     });
 
 socket.on('login result', (data) => {
-    if(data.success){
+    if (data.success) {
         closeLogin();
-        joined=true;
+        joined = true;
         showMessenger();
     }
     else
@@ -70,10 +89,12 @@ socket.on("chat message", (data) => {
     displayMessage(data);
 });
 
-socket.on("update lvl", (data) => {
-    if(data.lvl)
-        document.getElementById('lvl').innerText=data.lvl;
+
+// update the 
+/*socket.on("update lvl", (data) => {
+    if(data.accesslvl)
+        document.getElementById('lvl').innerText=data.accesslvl;
 });
 function requestLVL(){
     socket.emit("whatismylevel");
-}
+}*/
