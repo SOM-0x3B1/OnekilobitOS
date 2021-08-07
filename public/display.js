@@ -23,7 +23,7 @@ async function start() {
     await sleep(500);
     list.innerHTML += 'Connecting to server...  <span class="r">[ERROR]</span><br/>Authentication required.<br/><br/>';
     await sleep(300);
-    list.innerHTML += 'Onekilobit OS - Version 0.5.1<br />(C) Copyright Onekilobit Servers �̵̛̙͇̿͗͘�̷͉̗̐�̸̨͖̣̻͓̣̈́͗͗́ - �̶̨̧̨͔̗̖͎͕̒̍̈́̋̓̚�̴̧̹̻͖̦̭̬͝�̸̝̓̃̏̓̀̄͛̓͘͝. All rights reserved.';
+    list.innerHTML += 'Onekilobit OS - Version 0.5.3<br />(C) Copyright Onekilobit Servers �̵̛̙͇̿͗͘�̷͉̗̐�̸̨͖̣̻͓̣̈́͗͗́ - �̶̨̧̨͔̗̖͎͕̒̍̈́̋̓̚�̴̧̹̻͖̦̭̬͝�̸̝̓̃̏̓̀̄͛̓͘͝. All rights reserved.';
 
     let list2 = document.createElement('li');
     list2.id = 'loading';
@@ -41,8 +41,7 @@ async function start() {
     ul.remove();
     document.getElementById('command_line').remove();
 
-    document.getElementById('GUI').style.display = 'flex';
-    document.getElementById('accessLVL').style.display = 'block';
+    document.getElementById('GUI').style.display = 'flex';    
     document.getElementById('taskbar').style.display = 'flex';
     document.getElementById('ostime').style.display = 'block';
 
@@ -51,13 +50,15 @@ async function start() {
         icons[i].style.display = "inline";
     }
 
+    await sleep(5000);
+    document.getElementById('accessLVL').style.display = 'block';
     //terminal.classList.remove('hide');
 }
 
 // executed after startup.mp3 ended
-function afterstart() {
+/*function afterstart() {
     fan.play();
-}
+}*/
 
 // clock
 var ostime = document.getElementById('ostime');

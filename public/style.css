@@ -288,7 +288,7 @@ div ul li{
 	right: 2ex;
 	cursor: url("media/pointer.png"), default;
 
-	animation: fadein 5s;
+	animation: fadein 1s;
 }
 #lvlName{
 	position: absolute;
