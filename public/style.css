@@ -281,7 +281,19 @@ div ul li{
 	padding: 0 1ex;
 	animation: fadein 5s;
 }
-
+#accessLVL{
+	display: none;
+	position: absolute;
+	top: 2ex;
+	right: 2ex;
+	animation: fadein 5s;
+}
+#lvlName{
+	position: absolute;
+	top: 2.5ex;
+	right: 0;
+	color: red;
+}
 #taskbar{
 	display: none;
 	border-top: solid;

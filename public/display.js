@@ -42,6 +42,7 @@ async function start() {
     document.getElementById('command_line').remove();
 
     document.getElementById('GUI').style.display = 'flex';
+    document.getElementById('accessLVL').style.display = 'block';
     document.getElementById('taskbar').style.display = 'flex';
     document.getElementById('ostime').style.display = 'block';
 
