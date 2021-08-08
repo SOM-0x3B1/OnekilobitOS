@@ -26,7 +26,7 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%);	
+	transform: translate(-50%,-50%);
 }
 .terminal.hide{
 	opacity: 0;
@@ -137,7 +137,7 @@ div ul li{
 	color: white;
 	border: none;
 	margin: 0 0.5ex;
-	cursor: url("cursor-text.png"), text;
+	/*cursor: url("../media/text.png"), text;*/
 }
 #command:focus{
     outline: none;    
@@ -197,7 +197,7 @@ div ul li{
 	background: none;
 	color: white;
 	font-size: 17pt;
-	cursor: url("media/pointer.png"), default;	
+	cursor: url("../media/pointer.png"), default;	
 }
 #m{
 	font-family: 'VT323', monospace;
@@ -292,7 +292,7 @@ div ul li{
 	position: absolute;
 	top: 2ex;
 	right: 2ex;
-	cursor: url("media/pointer.png"), default;
+	cursor: url("../media/pointer.png"), default;
 
 	animation: fadein 1s;
 }
@@ -362,6 +362,7 @@ div ul li{
 	border:solid;
 	border-color: white;
 	outline: none;
+	/*cursor: url("../media/text.png"), text;*/
 }
 #signup{
 	position: absolute;

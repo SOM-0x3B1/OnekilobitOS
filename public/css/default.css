@@ -3,10 +3,10 @@
 	margin: 0;	
 }
 html{
-	cursor: url("media/custom.png"), default;
+	cursor: url("../media/custom.png"), default;
 }
 a,button{
-	cursor: url("media/pointer.png"), default;
+	cursor: url("../media/pointer.png"), default;
 }
 
 body{
