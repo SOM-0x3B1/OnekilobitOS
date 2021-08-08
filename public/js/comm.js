@@ -16,16 +16,16 @@ socket.on('send data', (data) => {
             lvlName.innerText = 'Guest';
             break;
         case 2:
-            lvlName.innerText = 'Member';
+            lvlName.innerText = 'User';
             break;
         case 3:
-            lvlName.innerText = 'Staff';
+            lvlName.innerText = 'Member';
             break;
         case 4:
-            lvlName.innerText = 'Co-Admin';
+            lvlName.innerText = 'Staff';
             break;
         case 5:
-            lvlName.innerText = 'Administrator';
+            lvlName.innerText = 'Admin';
             break;
     }
 });
