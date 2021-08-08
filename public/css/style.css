@@ -224,7 +224,18 @@ div ul li{
 }
 
 /*================ GUI =================*/
-
+#GUI{
+	display: none;
+	width: min-content;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: 90%;
+	
+	padding: 0 1ex;
+	animation: fadein 5s;
+}
 .icon{
 	display: none;
 	height: 40px;
@@ -255,14 +266,15 @@ div ul li{
 .desktopicon{
 	margin: 2ex;
 	margin-top: 3ex;
-	margin-bottom: 6ex;
+	margin-bottom: 7ex;
 	border: solid;
 	border-color: white;	
+	border-width: 2px;
 	width: 50px;
 	height: 50px;
 }
 #startmenu{
-	width: auto;
+	width: 50px;
 	margin-left: 1ex;
 	border-right: solid;
 	border-color: white;
@@ -270,17 +282,11 @@ div ul li{
 	margin-right: 2ex;
 	animation: fadein 5s;
 }
-
-#GUI{
-	display: none;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	height: 90%;
-	
-	padding: 0 1ex;
-	animation: fadein 5s;
+#startmenu img{
+	width: 40px;
+	height: 40px;
 }
+
 #accessLVL{
 	display: none;
 	position: absolute;
