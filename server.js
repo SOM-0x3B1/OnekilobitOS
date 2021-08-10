@@ -20,7 +20,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: config.passwd,
-    database: "onekilobit"
+    database: "onekilobit-os"
 });
 con.connect(function (err) {
     if (err) throw err;
