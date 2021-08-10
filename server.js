@@ -111,6 +111,7 @@ io.on("connection", function (socket) {
                 console.log('Invalid login attempt from: ' + data.email);
             }
             else if (err) {
+                socket.emit('login result', { success: false });
                 console.log(err);
             }
             else {

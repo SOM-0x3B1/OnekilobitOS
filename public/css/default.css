@@ -33,10 +33,12 @@ h2{
 #back{
 	position: absolute;
 	left: 2vw;
+}
+nav a{
 	font-size: 24pt;	
 	color: white;
 	text-decoration: none;
 }
-#back:hover{
+nav a:hover{
 	color: rgb(170, 170, 170);
 }
