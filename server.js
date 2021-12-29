@@ -60,13 +60,13 @@ app.post('/register', function (request, response) {
             response.redirect('/close.html');
         }
     });*/
-    con.query("SELECT * FROM user WHERE email = ?", [request.body.email], function (err, result) {
+    con.query("SELECT * FROM user WHERE email = ?", [request.body.email], function (err, res) {
         if (err) {
             console.log(err);
         }
-        else if (result.length == 0) {
-            con.query("INSERT INTO user (email, username, password) VALUES (?, ?, ?)", [request.body.email, request.body.nickname, request.body.password], function (err, result) {
-                if (err) throw err;
+        else if (res.length == 0) {
+            con.query("INSERT INTO user (email, username, password) VALUES (?, ?, ?)", [request.body.email, request.body.nickname, request.body.password], function (error, result) {
+                if (error) throw error;
                 console.log("1 record inserted");
             });
 
@@ -74,7 +74,7 @@ app.post('/register', function (request, response) {
             response.redirect('/close.html');
         }
         else {
-            console.log(result);
+            console.log(res);
             console.log(request.body.email + ' already exists');
             response.redirect('/register.html');
         }
